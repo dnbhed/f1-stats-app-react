@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react'
-import CareerStats from '../Components/CareerStatsContainer'
+import CareerStats from '../Components/CareerStats'
 
 class DriverStatsContainer extends Component {
 

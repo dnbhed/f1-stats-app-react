@@ -9,7 +9,6 @@ const NumOfWins = (props) => {
             numOfWins += 1
         }
     });
-    console.log(numOfWins)
 
     return (
         <Fragment>

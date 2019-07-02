@@ -4,9 +4,10 @@ import NumOfStarts from './CareerStatsComponents/NumOfStarts';
 import DriverDetails from './CareerStatsComponents/DriverDetails';
 import AverageGrid from './CareerStatsComponents/AverageGrid';
 import AverageFinish from './CareerStatsComponents/AverageFinish';
+import NumOfPoles from './CareerStatsComponents/NumOfPoles';
 
 
-const CareerStatsContainer = (props) => {
+const CareerStats = (props) => {
     return (
         <Fragment>
             <DriverDetails 
@@ -14,8 +15,9 @@ const CareerStatsContainer = (props) => {
                 code={props.code}
                 number={props.number}
                 nationality={props.nationality}/>
-            <NumOfWins races={props.allRaces} />
             <NumOfStarts races={props.allRaces} />
+            <NumOfWins races={props.allRaces} />
+            <NumOfPoles races={props.allRaces} />
             <AverageGrid races={props.allRaces} />
             <AverageFinish races={props.allRaces} />
         </Fragment>
