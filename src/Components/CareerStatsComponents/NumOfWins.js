@@ -5,7 +5,7 @@ const NumOfWins = (props) => {
     const races = props.races;
     let numOfWins = 0;
     races.forEach(race => {
-        if (race.Results[0].position == 1) {
+        if (race.Results[0].position === 1) {
             numOfWins += 1
         }
     });

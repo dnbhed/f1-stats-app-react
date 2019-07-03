@@ -5,7 +5,7 @@ const NumOfPoles = (props) => {
     const races = props.races;
     let numOfPoles = 0;
     races.forEach(race => {
-        if (race.Results[0].grid == 1) {
+        if (race.Results[0].grid === 1) {
             numOfPoles += 1
         }
     });
