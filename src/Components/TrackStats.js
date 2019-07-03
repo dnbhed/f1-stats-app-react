@@ -26,7 +26,7 @@ class SeasonStats extends Component {
         races.forEach(race => {
             count += parseInt(race.Results[0].grid)
         })
-        return Math.round(count / races.length)
+        return parseFloat((count / races.length).toFixed(2))
     }
 
     getAverageFinish(races) {
@@ -36,7 +36,7 @@ class SeasonStats extends Component {
                 count += parseInt(race.Results[0].position)
             }
         })
-        return Math.round(count / races.length)
+        return parseFloat((count / races.length).toFixed(2))
     }
 
     render() {
@@ -96,7 +96,7 @@ class SeasonStats extends Component {
         };
         const { chartOptions } = options;
         return (
-            <div width="150px">
+            <div id="track-stats">
                 <HighchartsReact
                     highcharts={Highcharts}
                     options={chartOptions}

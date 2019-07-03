@@ -12,7 +12,7 @@ const NumOfWins = (props) => {
 
     return (
         <Fragment>
-            <h3>Wins:{numOfWins}</h3>
+            <h3 id="num-of-wins">Wins:{numOfWins}</h3>
         </Fragment>
     );
 }

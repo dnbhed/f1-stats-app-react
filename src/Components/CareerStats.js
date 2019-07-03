@@ -9,18 +9,19 @@ import NumOfPoles from './CareerStatsComponents/NumOfPoles';
 
 const CareerStats = (props) => {
     return (
-        <Fragment>
-            <DriverDetails 
-                name={props.name} 
+        <div id="driver-career-stats">
+            <DriverDetails
+                name={props.name}
                 code={props.code}
                 number={props.number}
-                nationality={props.nationality}/>
+                nationality={props.nationality} />
             <NumOfStarts races={props.allRaces} />
             <NumOfWins races={props.allRaces} />
             <NumOfPoles races={props.allRaces} />
             <AverageGrid races={props.allRaces} />
             <AverageFinish races={props.allRaces} />
-        </Fragment>
+        </div>
+        
     );
     
 }

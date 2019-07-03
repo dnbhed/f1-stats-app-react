@@ -4,6 +4,7 @@ const AverageFinish = (props) => {
 
     const races = props.races;
 
+
     function getAverageFinish() {
         let count = 0;
         races.forEach(race => {
@@ -11,7 +12,7 @@ const AverageFinish = (props) => {
                 count += parseInt(race.Results[0].position)
             } 
         })
-        return Math.round(count / races.length)
+        return parseFloat((count / races.length).toFixed(2))
 
     }
 
@@ -19,7 +20,7 @@ const AverageFinish = (props) => {
 
     return (
         <Fragment>
-            <h3>Average Finishing Position:{averageFinish}</h3>
+            <h3 id="average-finish">Average Finishing Position:{averageFinish}</h3>
         </Fragment>
     );
 }

@@ -9,7 +9,7 @@ const AverageGrid = (props) => {
         races.forEach(race => {
             count += parseInt(race.Results[0].grid)
         })
-        return Math.round(count / races.length)
+        return parseFloat((count / races.length).toFixed(2))
 
     }
     
@@ -17,7 +17,7 @@ const AverageGrid = (props) => {
     
     return (
         <Fragment>
-            <h3>Average Grid Position:{averageGrid}</h3>
+            <h3 id="average-grid">Average Grid Position:{averageGrid}</h3>
         </Fragment>
     );
 }

@@ -55,7 +55,7 @@ class FinishingPie extends Component {
         };
         const { chartOptions } = options;
         return (
-            <div>
+            <div id="finishing-pie">
                 <HighchartsReact
                     highcharts={Highcharts}
                     options={chartOptions}

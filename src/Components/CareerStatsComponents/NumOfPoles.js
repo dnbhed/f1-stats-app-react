@@ -12,7 +12,7 @@ const NumOfPoles = (props) => {
 
     return (
         <Fragment>
-            <h3>Poles:{numOfPoles}</h3>
+            <h3 id="num-of-poles">Poles:{numOfPoles}</h3>
         </Fragment>
     );
 }

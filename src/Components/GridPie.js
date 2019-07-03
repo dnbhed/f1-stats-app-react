@@ -55,7 +55,7 @@ class GridPie extends Component {
         };
         const { chartOptions } = options;
         return (
-            <div width="150px">
+            <div id="grid-pie">
                 <HighchartsReact
                     highcharts={Highcharts}
                     options={chartOptions}
