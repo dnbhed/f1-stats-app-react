@@ -1,8 +1,20 @@
 import React, { Component } from 'react';
 import HighchartsReact from 'highcharts-react-official';
 import Highcharts from 'highcharts';
+import './TrackStats.css'
 
 class SeasonStats extends Component {
+
+    constructor(props) {
+        super(props)
+        this.chartComponent = React.createRef();
+
+    }
+
+    componentDidMount() {
+        this.chartComponent.current.chart.reflow();
+    }
+
     parseTrackGridData(tracks) {
         const reduced = tracks.reduce((acc, track) => {
             const circuit = `${track.MRData.RaceTable.circuitId}`;
@@ -24,7 +36,11 @@ class SeasonStats extends Component {
     getAverageGrid(races) {
         let count = 0;
         races.forEach(race => {
-            count += parseInt(race.Results[0].grid)
+            if (parseInt(race.Results[0].grid) === 0){
+                count += 20
+            }else{
+                count += parseInt(race.Results[0].grid)
+            }
         })
         return parseFloat((count / races.length).toFixed(2))
     }
@@ -50,6 +66,15 @@ class SeasonStats extends Component {
         const options = {
             chartOptions: {
                 chart: {
+                    borderWidth: 5,
+                    borderColor: 'rgb(27, 27, 27)',
+                    backgroundColor: {
+                        linearGradient: [0, 0, 500, 500],
+                        stops: [
+                            [0, 'rgb(133, 133, 133)'],
+                            [1, 'rgb(133, 133, 133)']
+                        ]
+                    },
                     type: 'column',
 
                 },
@@ -100,6 +125,7 @@ class SeasonStats extends Component {
                 <HighchartsReact
                     highcharts={Highcharts}
                     options={chartOptions}
+                    ref={this.chartComponent}
                 />
             </div>
         )

@@ -1,0 +1,7 @@
+#driver-stats-container{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    color: rgb(175, 175, 175);
+    background: rgb(27, 27, 27);
+}

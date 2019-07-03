@@ -5,7 +5,7 @@ import DriverDetails from './CareerStatsComponents/DriverDetails';
 import AverageGrid from './CareerStatsComponents/AverageGrid';
 import AverageFinish from './CareerStatsComponents/AverageFinish';
 import NumOfPoles from './CareerStatsComponents/NumOfPoles';
-
+import './CareerStats.css'
 
 const CareerStats = (props) => {
     return (

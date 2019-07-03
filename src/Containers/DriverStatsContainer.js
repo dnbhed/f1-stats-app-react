@@ -5,7 +5,7 @@ import FinishingPie from '../Components/FinishingPie';
 import DriverSelect from '../Components/DriverSelect';
 import SeasonStats from '../Components/SeasonsStats'
 import TrackStats from '../Components/TrackStats'
-
+import './DriverStatsContainer.css'
 
 class DriverStatsContainer extends Component {
 
@@ -96,38 +96,42 @@ class DriverStatsContainer extends Component {
     render(){
         return(
             <Fragment>
-                <DriverSelect 
+                <DriverSelect
                     drivers={this.state.drivers}
                     onDriverSelected={this.onDriverSelected}
                 />
-                <CareerStats
-                    allRaces={this.state.allRaces}
-                    name={this.state.name}
-                    code={this.state.code}
-                    number={this.state.number}
-                    nationality={this.state.nationality} 
-                />
-                <GridPie 
-                    allRaces={this.state.allRaces}
-                    code={this.state.code}
-                    number={this.state.number}
-                />
-                <FinishingPie 
-                    allRaces={this.state.allRaces}
-                    code={this.state.code}
-                    number={this.state.number}
-                />
-                 <SeasonStats 
-                    seasons={this.state.selectedDriverSeasonsResults}
-                    code={this.state.code}
-                    number={this.state.number}
-                />
-                 <TrackStats 
-                    tracks={this.state.selectedDriverTrackResults}
-                    code={this.state.code}
-                    number={this.state.number}
-                />
+                <main id="driver-stats-container">
+                    <CareerStats
+                        allRaces={this.state.allRaces}
+                        name={this.state.name}
+                        code={this.state.code}
+                        number={this.state.number}
+                        nationality={this.state.nationality}
+                    />
+                    <GridPie
+                        allRaces={this.state.allRaces}
+                        code={this.state.code}
+                        number={this.state.number}
+                    />
+                    <FinishingPie
+                        allRaces={this.state.allRaces}
+                        code={this.state.code}
+                        number={this.state.number}
+                    />
+                    <SeasonStats
+                        seasons={this.state.selectedDriverSeasonsResults}
+                        code={this.state.code}
+                        number={this.state.number}
+                    />
+                    <TrackStats
+                        tracks={this.state.selectedDriverTrackResults}
+                        code={this.state.code}
+                        number={this.state.number}
+                    />
+                </main>
             </Fragment>
+            
+                
         )
     }
 }

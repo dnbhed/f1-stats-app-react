@@ -1,9 +1,18 @@
 import React, { Component } from 'react';
 import HighchartsReact from 'highcharts-react-official';
 import Highcharts from 'highcharts';
+import './FinishingPie.css';
 
 class FinishingPie extends Component {
-    
+    constructor(props) {
+        super(props)
+        this.chartComponent = React.createRef();
+
+    }
+
+    componentDidMount() {
+        this.chartComponent.current.chart.reflow();
+    }
 
     parseFinishingData(races) {
 
@@ -27,6 +36,15 @@ class FinishingPie extends Component {
         const options = {
             chartOptions: {
                 chart: {
+                    borderWidth: 5,
+                    borderColor: 'rgbrgb(27, 27, 27)',
+                    backgroundColor: {
+                        linearGradient: [0, 0, 500, 500],
+                        stops: [
+                            [0, 'rgb(133, 133, 133)'],
+                            [1, 'rgb(133, 133, 133)']
+                        ]
+                    },
                     type: 'pie',
                     options3d: {
                         enabled: true,
@@ -39,6 +57,9 @@ class FinishingPie extends Component {
                 subtitle: {
                     text: `Times in Finishing Positions`
                 },
+                legend:{
+                    color:'white'
+                },
                 plotOptions: {
                     pie: {
                         innerSize: 100,
@@ -48,7 +69,7 @@ class FinishingPie extends Component {
                 series: [{
                     name: 'Grid Results',
                     size: 150,
-                    center: [100, 100],
+                    center: ["50%", "50%"],
                     data: positions
                 }]
             },
@@ -59,6 +80,8 @@ class FinishingPie extends Component {
                 <HighchartsReact
                     highcharts={Highcharts}
                     options={chartOptions}
+                    ref={this.chartComponent}
+
                 />
             </div>
         )

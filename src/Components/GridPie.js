@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
 import HighchartsReact from 'highcharts-react-official';
 import Highcharts from 'highcharts';
+import './GridPie.css'
 
 class GridPie extends Component {
-    
+    constructor(props) {
+        super(props)
+        this.chartComponent = React.createRef();
+    }
+
+    componentDidMount() {
+        this.chartComponent.current.chart.reflow();
+    }
 
     parseGridData(races) {
-
         const reduced = races.reduce((acc, race) => {
             const gridPosition = `P${race.Results[0].grid}`;
             if(acc[gridPosition]){
@@ -27,6 +34,15 @@ class GridPie extends Component {
         const options = {
             chartOptions: {
                 chart: {
+                    borderWidth: 5,
+                    borderColor: 'rgb(27, 27, 27)',
+                    backgroundColor: {
+                        linearGradient: [0, 0, 500, 500],
+                        stops: [
+                            [0, 'rgb(133, 133, 133)'],
+                            [1, 'rgb(133, 133, 133)']
+                        ]
+                    },
                     type: 'pie',
                     options3d: {
                         enabled: true,
@@ -48,7 +64,7 @@ class GridPie extends Component {
                 series: [{
                     name: 'Grid Results',
                     size: 150,
-                    center: [100, 100],
+                    center: ["50%", "50%"],
                     data: gridPositions
                 }]
             },
@@ -59,6 +75,7 @@ class GridPie extends Component {
                 <HighchartsReact
                     highcharts={Highcharts}
                     options={chartOptions}
+                    ref={this.chartComponent}
                 />
             </div>
         )
