@@ -1,10 +1,10 @@
 import React, {Component, Fragment} from 'react'
-import CareerStats from '../Components/CareerStats'
-import GridPie from '../Components/GridPie';
-import FinishingPie from '../Components/FinishingPie';
-import DriverSelect from '../Components/DriverSelect';
-import SeasonStats from '../Components/SeasonsStats'
-import TrackStats from '../Components/TrackStats'
+import CareerStats from '../Components/DriverStatsComponents/CareerStats'
+import GridPie from '../Components/DriverStatsComponents/GridPie';
+import FinishingPie from '../Components/DriverStatsComponents/FinishingPie';
+import DriverSelect from '../Components/SelectComponents/DriverSelect';
+import SeasonStats from '../Components/DriverStatsComponents/SeasonsStats'
+import TrackStats from '../Components/DriverStatsComponents/TrackStats'
 import './DriverStatsContainer.css'
 
 class DriverStatsContainer extends Component {

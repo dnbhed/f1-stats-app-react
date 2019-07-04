@@ -5,14 +5,14 @@ const NumOfWins = (props) => {
     const races = props.races;
     let numOfWins = 0;
     races.forEach(race => {
-        if (race.Results[0].position === 1) {
+        if (race.Results[0].position === "1") {
             numOfWins += 1
         }
     });
 
     return (
         <Fragment>
-            <h3 id="num-of-wins">Wins:{numOfWins}</h3>
+            <h3 id="num-of-wins">Wins: {numOfWins}</h3>
         </Fragment>
     );
 }

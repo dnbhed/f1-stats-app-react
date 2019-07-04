@@ -5,14 +5,14 @@ const NumOfPoles = (props) => {
     const races = props.races;
     let numOfPoles = 0;
     races.forEach(race => {
-        if (race.Results[0].grid === 1) {
+        if (race.Results[0].grid === "1") {
             numOfPoles += 1
         }
     });
 
     return (
         <Fragment>
-            <h3 id="num-of-poles">Poles:{numOfPoles}</h3>
+            <h3 id="num-of-poles">Poles: {numOfPoles}</h3>
         </Fragment>
     );
 }

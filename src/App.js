@@ -1,13 +1,11 @@
 import React, {Fragment} from 'react';
-import DriverStatsContainer from './Containers/DriverStatsContainer'
-import NavBar from './Containers/NavBar'
+import Routes from './Routes'
 import './App.css';
 
 function App() {
   return (
     <Fragment>
-      <NavBar />
-      <DriverStatsContainer />
+      <Routes />
     </Fragment>
 
    

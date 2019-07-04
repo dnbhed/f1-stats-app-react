@@ -21,7 +21,7 @@ const AverageGrid = (props) => {
     
     return (
         <Fragment>
-            <h3 id="average-grid">Average Grid Position:{averageGrid}</h3>
+            <h3 id="average-grid">Average Grid Position: {averageGrid}</h3>
         </Fragment>
     );
 }

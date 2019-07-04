@@ -6,7 +6,7 @@ const NumOfStarts = (props) => {
 
     return (
         <Fragment>
-            <h3 id="num-of-starts">Starts:{starts}</h3>
+            <h3 id="num-of-starts">Starts: {starts}</h3>
         </Fragment>
     );
 }

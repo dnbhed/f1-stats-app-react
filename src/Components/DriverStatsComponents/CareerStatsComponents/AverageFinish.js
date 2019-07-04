@@ -20,7 +20,7 @@ const AverageFinish = (props) => {
 
     return (
         <Fragment>
-            <h3 id="average-finish">Average Finishing Position:{averageFinish}</h3>
+            <h3 id="average-finish">Average Finishing Position: {averageFinish}</h3>
         </Fragment>
     );
 }
