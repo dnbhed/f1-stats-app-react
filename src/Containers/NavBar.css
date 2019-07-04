@@ -1,0 +1,15 @@
+#nav-bar{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    color: rgb(175, 175, 175);
+    text-align: center;
+}
+
+h1{
+    font-size: 1.8em;
+}
+
+h2{
+    font-size: 1.5em;
+    background: rgb(83, 83, 83);
+}

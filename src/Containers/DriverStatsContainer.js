@@ -100,6 +100,7 @@ class DriverStatsContainer extends Component {
                     drivers={this.state.drivers}
                     onDriverSelected={this.onDriverSelected}
                 />
+                <h2 id="page-explanation">Choose a driver to see their career stats</h2>
                 <main id="driver-stats-container">
                     <CareerStats
                         allRaces={this.state.allRaces}

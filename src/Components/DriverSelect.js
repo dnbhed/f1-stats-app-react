@@ -1,4 +1,5 @@
 import React from 'react';
+import './DriverSelect.css'
 
 const DriverSelect = (props) => {
 
@@ -12,10 +13,13 @@ const DriverSelect = (props) => {
     }
 
     return (
-        <select id="driver-selector" defaultValue="default" onChange={handleChange}>
-            <option disabled value="default">Choose a Driver...</option>
-            {options}
-        </select>
+        <div id="select-bar">
+            <select id="driver-selector" defaultValue="default" onChange={handleChange}>
+                <option disabled value="default">Choose a Driver...</option>
+                {options}
+            </select>
+        </div>
+        
     )
 }
 

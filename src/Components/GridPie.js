@@ -15,7 +15,13 @@ class GridPie extends Component {
 
     parseGridData(races) {
         const reduced = races.reduce((acc, race) => {
-            const gridPosition = `P${race.Results[0].grid}`;
+            let position = ''
+            if(race.Results[0].grid === '0'){
+                position = 'Pit Lane Start'
+            } else {
+                position = `P${race.Results[0].grid}`
+            }
+            const gridPosition = position;
             if(acc[gridPosition]){
                 acc[gridPosition] += 1;
             } else {

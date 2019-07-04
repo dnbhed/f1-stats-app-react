@@ -7,7 +7,11 @@ const AverageGrid = (props) => {
     function getAverageGrid(){
         let count = 0;
         races.forEach(race => {
-            count += parseInt(race.Results[0].grid)
+            if (parseInt(race.Results[0].grid) === 0) {
+                count += 20
+            } else {
+                count += parseInt(race.Results[0].grid)
+            }
         })
         return parseFloat((count / races.length).toFixed(2))
 

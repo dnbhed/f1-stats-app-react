@@ -1,0 +1,12 @@
+#select-bar{
+    align-content: center;
+    text-align: center;
+}
+
+select {
+  width: 20%;
+  height: 25px;
+  padding: 16px 20px;
+  border: 5px;
+  background-color: #f1f1f1;
+}
