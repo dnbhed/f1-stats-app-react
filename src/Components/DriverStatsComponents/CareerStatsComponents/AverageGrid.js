@@ -3,7 +3,7 @@ import React, { Fragment } from 'react'
 const AverageGrid = (props) => {
 
     const races = props.races;
-
+    let averageGrid = 0
     function getAverageGrid(){
         let count = 0;
         races.forEach(race => {
@@ -16,7 +16,7 @@ const AverageGrid = (props) => {
         return parseFloat((count / races.length).toFixed(2))
     }
     
-    const averageGrid = getAverageGrid();
+    if(getAverageGrid()) {averageGrid = getAverageGrid();}
     
     return (
         <Fragment>

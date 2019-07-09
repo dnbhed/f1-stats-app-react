@@ -8,7 +8,7 @@ const TrackSelect = (props) => {
     })
 
     function handleChange(event) {
-        props.onTrackSelected(event.target.value)
+        props.onTrackSelected(event)
     }
 
     return (

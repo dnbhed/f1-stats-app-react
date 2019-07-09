@@ -31,3 +31,8 @@
 #track-select{
     grid-column: 2;    
 }
+
+#charts-container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}

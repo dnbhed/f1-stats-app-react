@@ -82,21 +82,19 @@ class DriverStatsContainer extends Component {
                     selectedDriverTrackResults: results
                 })
             })
-            
         })
-
-        
     }
 
 
     render(){
         return(
             <Fragment>
+                <h2 id="page-explanation">Choose a driver to see their career stats</h2>
+
                 <DriverSelect
                     drivers={this.state.drivers}
                     onDriverSelected={this.onDriverSelected}
                 />
-                <h2 id="page-explanation">Choose a driver to see their career stats</h2>
                 <main id="driver-stats-container">
                     <CareerStats
                         allRaces={this.state.allRaces}

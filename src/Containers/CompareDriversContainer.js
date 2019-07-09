@@ -2,6 +2,7 @@ import React, {Component, Fragment} from 'react'
 import DriverSelect from '../Components/SelectComponents/DriverSelect'
 import TrackSelect from '../Components/SelectComponents/TrackSelect'
 import CareerStatsCompare from '../Components/DriverStatsComponents/CareerStatsCompare'
+import TrackResultsBySeason from '../Components/DriverStatsComponents/TrackResultsBySeason'
 import './CompareDriversContainer.css'
 
 class CompareDriversContainer extends Component{
@@ -27,7 +28,8 @@ class CompareDriversContainer extends Component{
             selectedDriverSeasonsResults2: [],
             selectedDriverTrackResults2: [],
             tracks: [],
-            selectedTrack: ''
+            selectedTrack: '', 
+            selectedTrackName: ''
 
         }
         this.onDriverSelected1 = this.onDriverSelected1.bind(this)
@@ -144,11 +146,12 @@ class CompareDriversContainer extends Component{
     }
 
     onTrackSelect(event){
-        this.setState({selectedTrack: event})
+        const trackId = event.target.value
+        this.setState({ selectedTrack: trackId})
         if(this.state.code1){
             const driverId = this.state.driver1ID
             console.log(driverId)
-            const url = `http://ergast.com/api/f1/circuits/${event}/drivers/${driverId}/results.json`
+            const url = `http://ergast.com/api/f1/circuits/${trackId}/drivers/${driverId}/results.json`
             console.log(url)
             fetch(url)
                 .then(res => res.json())
@@ -159,7 +162,7 @@ class CompareDriversContainer extends Component{
 
         if(this.state.code2){
             const driverId = this.state.driver2ID
-            const url = `http://ergast.com/api/f1/circuits/${event}/drivers/${driverId}/results.json`
+            const url = `http://ergast.com/api/f1/circuits/${trackId}/drivers/${driverId}/results.json`
             fetch(url)
                 .then(res => res.json())
                 .then(results => this.setState({
@@ -171,6 +174,8 @@ class CompareDriversContainer extends Component{
     render(){
         return(
             <Fragment>
+                <h2 id="page-explanation">Choose two drivers to compare their career stats. Choose a track to compare their preformances at that track.</h2>
+                
                 <section id="selectors">
 
                     <div id="driver-1-select">
@@ -222,7 +227,20 @@ class CompareDriversContainer extends Component{
                 </section>
 
                 <section id="charts-container">
-                    {/* <TrackResultsBySeason/> */}
+                    <div>
+                        <TrackResultsBySeason
+                            results={this.state.selectedDriverTrackResults1}
+                            code={this.state.code1}
+                        />
+                    </div>
+                    <div>
+                        <TrackResultsBySeason
+                            results={this.state.selectedDriverTrackResults2}
+                            code={this.state.code2}
+                        />
+                    </div>
+                    
+                    
                 </section>
             </Fragment>
             

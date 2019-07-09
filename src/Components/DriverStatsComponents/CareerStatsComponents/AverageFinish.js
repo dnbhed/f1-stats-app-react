@@ -3,7 +3,8 @@ import React, { Fragment } from 'react'
 const AverageFinish = (props) => {
 
     const races = props.races;
-    
+    let averageFinish = 0
+
     function getAverageFinish() {
         let count = 0;
         races.forEach(race => {
@@ -14,7 +15,7 @@ const AverageFinish = (props) => {
         return parseFloat((count / races.length).toFixed(2))
     }
 
-    const averageFinish = getAverageFinish();
+    if(getAverageFinish()){ averageFinish = getAverageFinish();}
 
     return (
         <Fragment>
