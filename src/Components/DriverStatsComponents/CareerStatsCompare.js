@@ -17,9 +17,7 @@ const CareerStatsCompare = (props) => {
             <AverageGrid races={props.allRaces} />
             <AverageFinish races={props.allRaces} />
         </div>
-
     );
-
 }
 
 

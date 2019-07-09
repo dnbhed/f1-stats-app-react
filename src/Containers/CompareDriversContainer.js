@@ -12,6 +12,7 @@ class CompareDriversContainer extends Component{
             allRaces1: [],
             name1: 'Please Select a Driver',
             code1: '',
+            driver1ID: '',
             number1: '',
             nationality1: '',
             drivers: [],
@@ -20,14 +21,18 @@ class CompareDriversContainer extends Component{
             allRaces2: [],
             name2: 'Please Select a Driver',
             code2: '',
+            driver2ID: '',
             number2: '',
             nationality2: '',
             selectedDriverSeasonsResults2: [],
             selectedDriverTrackResults2: [],
-            tracks: []
+            tracks: [],
+            selectedTrack: ''
+
         }
         this.onDriverSelected1 = this.onDriverSelected1.bind(this)
         this.onDriverSelected2 = this.onDriverSelected2.bind(this)
+        this.onTrackSelect = this.onTrackSelect.bind(this)
     }
 
     componentDidMount() {
@@ -48,6 +53,7 @@ class CompareDriversContainer extends Component{
 
     onDriverSelected1(event, number) {
         const driverId = event
+        this.setState({driver1ID: event})
         const driverUrl = `http://ergast.com/api/f1/drivers/${driverId}/results.json?limit=1000`;
         fetch(driverUrl)
             .then(res => res.json())
@@ -80,26 +86,20 @@ class CompareDriversContainer extends Component{
                     })
             })
 
-        const circuitUrl = `http://ergast.com/api/f1/current/circuits.json`
-        fetch(circuitUrl)
-            .then(res => res.json())
-            .then(circuits => {
-                const promises = circuits.MRData.CircuitTable.Circuits.map((circuit) => {
-                    return fetch(`http://ergast.com/api/f1/circuits/${circuit.circuitId}/drivers/${driverId}/results.json`)
-                        .then(res => res.json())
-                })
-
-                Promise.all(promises)
-                    .then((results) => {
-                        this.setState({
-                            selectedDriverTrackResults1: results
-                        })
-                    })
-            })
+        if (this.state.selectedTrack) {
+            const trackId = this.state.selectedTrack
+            const url = `http://ergast.com/api/f1/circuits/${trackId}/drivers/${event}/results.json`
+            fetch(url)
+                .then(res => res.json())
+                .then(results => this.setState({
+                    selectedDriverTrackResults1: results.MRData.RaceTable.Races
+                }))
+        }   
     }
 
     onDriverSelected2(event, number) {
         const driverId = event
+        this.setState({ driver2ID: event })
         const driverUrl = `http://ergast.com/api/f1/drivers/${driverId}/results.json?limit=1000`;
         fetch(driverUrl)
             .then(res => res.json())
@@ -132,50 +132,73 @@ class CompareDriversContainer extends Component{
                     })
             })
 
-        const circuitUrl = `http://ergast.com/api/f1/current/circuits.json`
-        fetch(circuitUrl)
-            .then(res => res.json())
-            .then(circuits => {
-                const promises = circuits.MRData.CircuitTable.Circuits.map((circuit) => {
-                    return fetch(`http://ergast.com/api/f1/circuits/${circuit.circuitId}/drivers/${driverId}/results.json`)
-                        .then(res => res.json())
-                })
+        if (this.state.selectedTrack) {
+            const trackId = this.state.selectedTrack
+            const url = `http://ergast.com/api/f1/circuits/${trackId}/drivers/${event}/results.json`
+            fetch(url)
+                .then(res => res.json())
+                .then(results => this.setState({
+                    selectedDriverTrackResults1: results.MRData.RaceTable.Races
+                }))
+        }
+    }
 
-                Promise.all(promises)
-                    .then((results) => {
-                        this.setState({
-                            selectedDriverTrackResults2: results
-                        })
-                    })
+    onTrackSelect(event){
+        this.setState({selectedTrack: event})
+        if(this.state.code1){
+            const driverId = this.state.driver1ID
+            console.log(driverId)
+            const url = `http://ergast.com/api/f1/circuits/${event}/drivers/${driverId}/results.json`
+            console.log(url)
+            fetch(url)
+                .then(res => res.json())
+                .then(results => this.setState({
+                    selectedDriverTrackResults1: results.MRData.RaceTable.Races
+                }))
+        }
 
-            })
-
+        if(this.state.code2){
+            const driverId = this.state.driver2ID
+            const url = `http://ergast.com/api/f1/circuits/${event}/drivers/${driverId}/results.json`
+            fetch(url)
+                .then(res => res.json())
+                .then(results => this.setState({
+                    selectedDriverTrackResults1: results.MRData.RaceTable.Races
+                }))
+        }
     }
 
     render(){
         return(
             <Fragment>
                 <section id="selectors">
-                    
-                    <DriverSelect
-                        drivers={this.state.drivers}
-                        onDriverSelected={this.onDriverSelected1}
-                        number={1}
 
-                    />
-                    <DriverSelect
-                        drivers={this.state.drivers}
-                        onDriverSelected={this.onDriverSelected2}
-                        number={2}
-                    />
-                    <TrackSelect
-                        tracks={this.state.tracks}
+                    <div id="driver-1-select">
+                        <DriverSelect
+                            drivers={this.state.drivers}
+                            onDriverSelected={this.onDriverSelected1}
+                            number={1}
 
-                    />
+                        />
+                    </div>
 
+                    <div id="track-select">
+                        <TrackSelect
+                            tracks={this.state.tracks}
+                            onTrackSelected={this.onTrackSelect}
+                        />
+                    </div>
 
+                    <div id="driver-2-select">
+                        <DriverSelect
+                            drivers={this.state.drivers}
+                            onDriverSelected={this.onDriverSelected2}
+                            number={2}
+                        />
+                    </div>
 
                 </section>
+
                 <section id="career-stats">
                     <div id="driver-1-career-stats">
                         <CareerStatsCompare
@@ -195,9 +218,11 @@ class CompareDriversContainer extends Component{
                             nationality={this.state.nationality2}
                         />
                     </div>
-                    
+                                        
+                </section>
 
-                    
+                <section id="charts-container">
+                    {/* <TrackResultsBySeason/> */}
                 </section>
             </Fragment>
             

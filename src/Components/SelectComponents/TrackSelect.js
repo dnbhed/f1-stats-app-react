@@ -4,7 +4,7 @@ import './DriverSelect.css'
 const TrackSelect = (props) => {
 
     const options = props.tracks.map((track, index) => {
-        return <option key={index} value={track.trackId}>{track.circuitName}</option>
+        return <option key={index} value={track.circuitId}>{track.circuitName}</option>
     })
 
     function handleChange(event) {

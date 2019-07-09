@@ -14,3 +14,20 @@
     grid-column: 9 / span 3;
 
 }
+
+#selectors{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+}
+
+#driver-1-select{
+    grid-column: 1;
+
+}
+#driver-2-select{
+    grid-column: 3;
+}
+#track-select{
+    grid-column: 2;    
+}
