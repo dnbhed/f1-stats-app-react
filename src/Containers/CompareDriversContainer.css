@@ -1,0 +1,16 @@
+#career-stats{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    color: rgb(175, 175, 175);
+    background: rgb(27, 27, 27);
+    text-align: center;
+}
+
+#driver-1-career-stats{
+    grid-column: 2 / span 3;
+}
+#driver-2-career-stats{
+    grid-column: 9 / span 3;
+
+}

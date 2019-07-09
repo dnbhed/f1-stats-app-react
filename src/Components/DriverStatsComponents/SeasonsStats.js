@@ -8,7 +8,6 @@ class SeasonStats extends Component {
     constructor(props) {
         super(props)
         this.chartComponent = React.createRef();
-
     }
 
     componentDidMount() {
@@ -16,7 +15,6 @@ class SeasonStats extends Component {
     }
 
     parseSeasonsGridData(seasons) {
-        
         const reduced = seasons.reduce((acc, season) => {
             const year = `${season.MRData.RaceTable.season}`;
             acc[year] = this.getAverageGrid(season.MRData.RaceTable.Races)
@@ -53,13 +51,10 @@ class SeasonStats extends Component {
             }
         })
         return parseFloat((count / races.length).toFixed(2))
-
     }
 
     render() {
-
         const seasonsGridData = this.parseSeasonsGridData(this.props.seasons)
-        
         const seasonsFinishingData = this.parseSeasonsFinishingData(this.props.seasons)
         const years = Object.values(seasonsGridData.map(data => {
             return data[0]

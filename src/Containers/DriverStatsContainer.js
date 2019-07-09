@@ -22,7 +22,6 @@ class DriverStatsContainer extends Component {
             selectedDriverTrackResults:[]
         }
         this.onDriverSelected = this.onDriverSelected.bind(this)
-
     }
 
     componentDidMount(){
@@ -32,7 +31,6 @@ class DriverStatsContainer extends Component {
             .then(drivers => this.setState({
                 drivers: drivers.MRData.DriverTable.Drivers
             }))
-        
     }
 
     onDriverSelected(event){
@@ -59,16 +57,14 @@ class DriverStatsContainer extends Component {
             const promises = seasons.MRData.SeasonTable.Seasons.map((season) => {
                 return fetch(`http://ergast.com/api/f1/${season.season}/drivers/${driverId}/results.json`)
                 .then(res => res.json())
-            })
-                
+            }) 
         
             Promise.all(promises)
             .then((results) => {
                 this.setState({
                     selectedDriverSeasonsResults: results
                 })
-            })
-            
+            }) 
         })
 
         const circuitUrl = `http://ergast.com/api/f1/current/circuits.json`

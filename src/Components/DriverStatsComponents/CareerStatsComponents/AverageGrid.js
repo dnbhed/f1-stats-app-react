@@ -14,7 +14,6 @@ const AverageGrid = (props) => {
             }
         })
         return parseFloat((count / races.length).toFixed(2))
-
     }
     
     const averageGrid = getAverageGrid();

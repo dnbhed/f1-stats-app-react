@@ -8,8 +8,8 @@ const DriverSelect = (props) => {
     })
 
     function handleChange(event) {
-        props.onDriverSelected(event.target.value)
-
+        console.log(props.number)
+        props.onDriverSelected(event.target.value, props.number)
     }
 
     return (
@@ -19,7 +19,6 @@ const DriverSelect = (props) => {
                 {options}
             </select>
         </div>
-        
     )
 }
 

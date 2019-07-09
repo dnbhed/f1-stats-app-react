@@ -7,7 +7,6 @@ class FinishingPie extends Component {
     constructor(props) {
         super(props)
         this.chartComponent = React.createRef();
-
     }
 
     componentDidMount() {
@@ -15,7 +14,6 @@ class FinishingPie extends Component {
     }
 
     parseFinishingData(races) {
-
         const reduced = races.reduce((acc, race) => {
             const position = `P${race.Results[0].position}`;
             if (acc[position]) {
@@ -30,9 +28,7 @@ class FinishingPie extends Component {
 
 
     render() {
-
         const positions = this.parseFinishingData(this.props.allRaces)
-
         const options = {
             chartOptions: {
                 chart: {

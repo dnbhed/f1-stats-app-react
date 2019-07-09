@@ -34,9 +34,7 @@ class GridPie extends Component {
     
 
     render() {
-        
         const gridPositions = this.parseGridData(this.props.allRaces)
-        
         const options = {
             chartOptions: {
                 chart: {
