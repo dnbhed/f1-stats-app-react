@@ -38,14 +38,14 @@ class CompareDriversContainer extends Component{
     }
 
     componentDidMount() {
-        const driversUrl = 'http://ergast.com/api/f1/current/drivers.json'
+        const driversUrl = 'https://ergast.com/api/f1/current/drivers.json'
         fetch(driversUrl)
             .then(res => res.json())
             .then(drivers => this.setState({
                 drivers: drivers.MRData.DriverTable.Drivers
             }))
 
-        const tracksUrl = 'http://ergast.com/api/f1/current/circuits.json'
+        const tracksUrl = 'https://ergast.com/api/f1/current/circuits.json'
         fetch(tracksUrl)
             .then(res => res.json())
             .then(drivers => this.setState({
@@ -56,7 +56,7 @@ class CompareDriversContainer extends Component{
     onDriverSelected1(event, number) {
         const driverId = event
         this.setState({driver1ID: event})
-        const driverUrl = `http://ergast.com/api/f1/drivers/${driverId}/results.json?limit=1000`;
+        const driverUrl = `https://ergast.com/api/f1/drivers/${driverId}/results.json?limit=1000`;
         fetch(driverUrl)
             .then(res => res.json())
             .then(allRaces => {
@@ -70,13 +70,13 @@ class CompareDriversContainer extends Component{
             })
             .catch(err => console.error)
 
-        const seasonUrl = `http://ergast.com/api/f1/drivers/${driverId}/seasons.json`
+        const seasonUrl = `https://ergast.com/api/f1/drivers/${driverId}/seasons.json`
         fetch(seasonUrl)
             .then(res => res.json())
             .then(seasons => {
 
                 const promises = seasons.MRData.SeasonTable.Seasons.map((season) => {
-                    return fetch(`http://ergast.com/api/f1/${season.season}/drivers/${driverId}/results.json`)
+                    return fetch(`https://ergast.com/api/f1/${season.season}/drivers/${driverId}/results.json`)
                         .then(res => res.json())
                 })
 
@@ -90,7 +90,7 @@ class CompareDriversContainer extends Component{
 
         if (this.state.selectedTrack) {
             const trackId = this.state.selectedTrack
-            const url = `http://ergast.com/api/f1/circuits/${trackId}/drivers/${event}/results.json`
+            const url = `https://ergast.com/api/f1/circuits/${trackId}/drivers/${event}/results.json`
             fetch(url)
                 .then(res => res.json())
                 .then(results => this.setState({
@@ -102,7 +102,7 @@ class CompareDriversContainer extends Component{
     onDriverSelected2(event, number) {
         const driverId = event
         this.setState({ driver2ID: event })
-        const driverUrl = `http://ergast.com/api/f1/drivers/${driverId}/results.json?limit=1000`;
+        const driverUrl = `https://ergast.com/api/f1/drivers/${driverId}/results.json?limit=1000`;
         fetch(driverUrl)
             .then(res => res.json())
             .then(allRaces => {
@@ -116,13 +116,13 @@ class CompareDriversContainer extends Component{
             })
             .catch(err => console.error)
 
-        const seasonUrl = `http://ergast.com/api/f1/drivers/${driverId}/seasons.json`
+        const seasonUrl = `https://ergast.com/api/f1/drivers/${driverId}/seasons.json`
         fetch(seasonUrl)
             .then(res => res.json())
             .then(seasons => {
 
                 const promises = seasons.MRData.SeasonTable.Seasons.map((season) => {
-                    return fetch(`http://ergast.com/api/f1/${season.season}/drivers/${driverId}/results.json`)
+                    return fetch(`https://ergast.com/api/f1/${season.season}/drivers/${driverId}/results.json`)
                         .then(res => res.json())
                 })
 
@@ -136,7 +136,7 @@ class CompareDriversContainer extends Component{
 
         if (this.state.selectedTrack) {
             const trackId = this.state.selectedTrack
-            const url = `http://ergast.com/api/f1/circuits/${trackId}/drivers/${event}/results.json`
+            const url = `https://ergast.com/api/f1/circuits/${trackId}/drivers/${event}/results.json`
             fetch(url)
                 .then(res => res.json())
                 .then(results => this.setState({
@@ -151,7 +151,7 @@ class CompareDriversContainer extends Component{
         if(this.state.code1){
             const driverId = this.state.driver1ID
             console.log(driverId)
-            const url = `http://ergast.com/api/f1/circuits/${trackId}/drivers/${driverId}/results.json`
+            const url = `https://ergast.com/api/f1/circuits/${trackId}/drivers/${driverId}/results.json`
             console.log(url)
             fetch(url)
                 .then(res => res.json())
@@ -162,7 +162,7 @@ class CompareDriversContainer extends Component{
 
         if(this.state.code2){
             const driverId = this.state.driver2ID
-            const url = `http://ergast.com/api/f1/circuits/${trackId}/drivers/${driverId}/results.json`
+            const url = `https://ergast.com/api/f1/circuits/${trackId}/drivers/${driverId}/results.json`
             fetch(url)
                 .then(res => res.json())
                 .then(results => this.setState({

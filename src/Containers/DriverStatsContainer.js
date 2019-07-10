@@ -25,7 +25,7 @@ class DriverStatsContainer extends Component {
     }
 
     componentDidMount(){
-        const driversUrl = 'http://ergast.com/api/f1/current/drivers.json'
+        const driversUrl = 'https://ergast.com/api/f1/current/drivers.json'
         fetch(driversUrl)
             .then(res => res.json())
             .then(drivers => this.setState({
@@ -35,7 +35,7 @@ class DriverStatsContainer extends Component {
 
     onDriverSelected(event){
         const driverId = event
-        const driverUrl = `http://ergast.com/api/f1/drivers/${driverId}/results.json?limit=1000`;
+        const driverUrl = `https://ergast.com/api/f1/drivers/${driverId}/results.json?limit=1000`;
         fetch(driverUrl)
             .then(res => res.json())
             .then(allRaces => {
@@ -49,13 +49,13 @@ class DriverStatsContainer extends Component {
             })
             .catch(err => console.error)
         
-        const seasonUrl = `http://ergast.com/api/f1/drivers/${driverId}/seasons.json`
+        const seasonUrl = `https://ergast.com/api/f1/drivers/${driverId}/seasons.json`
         fetch(seasonUrl)
         .then(res => res.json())
         .then(seasons => {
 
             const promises = seasons.MRData.SeasonTable.Seasons.map((season) => {
-                return fetch(`http://ergast.com/api/f1/${season.season}/drivers/${driverId}/results.json`)
+                return fetch(`https://ergast.com/api/f1/${season.season}/drivers/${driverId}/results.json`)
                 .then(res => res.json())
             }) 
         
@@ -67,12 +67,12 @@ class DriverStatsContainer extends Component {
             }) 
         })
 
-        const circuitUrl = `http://ergast.com/api/f1/current/circuits.json`
+        const circuitUrl = `https://ergast.com/api/f1/current/circuits.json`
         fetch(circuitUrl)
         .then(res => res.json())
         .then(circuits => {
             const promises = circuits.MRData.CircuitTable.Circuits.map((circuit) => {
-                return fetch(`http://ergast.com/api/f1/circuits/${circuit.circuitId}/drivers/${driverId}/results.json`)
+                return fetch(`https://ergast.com/api/f1/circuits/${circuit.circuitId}/drivers/${driverId}/results.json`)
                 .then(res => res.json())
             })
                 
