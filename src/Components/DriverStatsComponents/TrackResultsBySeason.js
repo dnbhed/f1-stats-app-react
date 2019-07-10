@@ -4,99 +4,107 @@ import Highcharts from 'highcharts';
 
 const TrackResultsBySeason = (props) => {
 
-    const options = { chartOptions:{
-        chart: {
-            zoomType: 'xy'
-        },
-        title: {
-            text: `code Results @ track`,
-            align: 'center'
-        },
-        subtitle: {
-            text: 'Source: ergast.com',
-            align: 'center'
-        },
-        xAxis: [{
-            reversed: false,
-            categories: [],
-            crosshair: true
-        }],
-        yAxis: [{
-            reversed: true,
-            gridLineWidth: 0,
+    let driverName = ''
+    let driverCode = ''
+
+
+    if(props.results[0]){
+        driverName = props.results[0].Results[0].Driver.givenName + ' ' + props.results[0].Results[0].Driver.familyName + ' @ ' + props.results[0].Circuit.circuitName
+
+        driverCode = props.code
+    }
+    
+    function parseSeasonsGridDataresults(results) {
+        const reduced = results.reduce((acc, result) => {
+            const year = `${result.season}`;
+            acc[year] = parseInt(result.Results[0].grid)
+            return acc;
+        }, {})
+        return Object.entries(reduced);
+    }
+
+    function parseSeasonsFinishingData(results) {
+        const reduced = results.reduce((acc, result) => {
+            const year = `${result.season}`;
+            acc[year] = parseInt(result.Results[0].position)
+            return acc;
+        }, {})
+        return Object.entries(reduced);
+    }
+
+    
+
+    const results = props.results
+    const gridResults = parseSeasonsGridDataresults(results)
+    const finishingResults = parseSeasonsFinishingData(results)
+
+    const years = Object.values(gridResults.map(data => {
+        return data[0]
+    }))
+
+    const options = {
+        chartOptions: {
+            chart: {
+                borderWidth: 5,
+                borderColor: 'rgb(27, 27, 27)',
+                backgroundColor: {
+                    linearGradient: [0, 0, 500, 500],
+                    stops: [
+                        [0, 'rgb(133, 133, 133)'],
+                        [1, 'rgb(133, 133, 133)']
+                    ]
+                },
+                type: 'line'
+            },
             title: {
-                text: 'Position',
-                style: {
-                    color: Highcharts.getOptions().colors[0]
-                }
+                text: driverName
             },
-            labels: {
-                format: 'P{value} ',
-                style: {
-                    color: Highcharts.getOptions().colors[0]
-                }
+            subtitle: {
+                text: `Average Grid and Finishing Positions`
             },
-            min: 1,
-            max: 20
-        }
-        ],
-        tooltip: {
-            shared: true
-        },
-        legend: {
-            layout: 'vertical',
-            align: 'center',
-            x: 80,
-            verticalAlign: 'top',
-            y: 55,
-            floating: true,
-            backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || 'rgba(255,255,255,0.25)'
-        },
-        series: [
-            {
-                name: `code Grid Position`,
-                type: 'line',
-                yAxis: 0,
-                data: [],
-                marker: {
-                    enabled: true
-                },
-                tooltip: {
-                    valuePrefix: 'P'
-                }
-            },
-            {
-                name: `code Finishing Position`,
-                type: 'line',
-                yAxis: 0,
-                data: [],
-                marker: {
-                    enabled: true
-                },
-                tooltip: {
-                    valuePrefix: 'P'
-                }
-            }
-        ],
-        responsive: {
-            rules: [{
-                condition: {
-                    maxWidth: 500
-                },
-                chartOptions: {
-                    legend: {
-                        floating: false,
-                        layout: 'horizontal',
-                        align: 'center',
-                        verticalAlign: 'bottom',
-                        x: 0,
-                        y: 0
+            xAxis: [{
+                reversed: false,
+                categories: years,
+                crosshair: true
+            }],
+            yAxis: [{
+                reversed: true,
+                gridLineWidth: 0,
+                title: {
+                    text: 'Position',
+                    style: {
+                        color: Highcharts.getOptions().colors[0]
                     }
+                },
+                labels: {
+                    format: 'P{value} ',
+                    style: {
+                        color: Highcharts.getOptions().colors[0]
+                    }
+                },
+                min: 1,
+                max: 20
+            }],
+            plotOptions: {
+                pie: {
+                    innerSize: 100,
+                    depth: 45
                 }
+            },
+            series: [{
+                name: 'Grid Results',
+                size: 150,
+                center: [100, 100],
+                data: gridResults
+            },
+            {
+                name: 'Finishing Results',
+                size: 150,
+                center: [100, 100],
+                data: finishingResults
             }]
-        }
- 
-    }}
+        },
+    };
     const { chartOptions } = options;
 
     return(

@@ -140,7 +140,7 @@ class CompareDriversContainer extends Component{
             fetch(url)
                 .then(res => res.json())
                 .then(results => this.setState({
-                    selectedDriverTrackResults1: results.MRData.RaceTable.Races
+                    selectedDriverTrackResults2: results.MRData.RaceTable.Races
                 }))
         }
     }
@@ -166,7 +166,7 @@ class CompareDriversContainer extends Component{
             fetch(url)
                 .then(res => res.json())
                 .then(results => this.setState({
-                    selectedDriverTrackResults1: results.MRData.RaceTable.Races
+                    selectedDriverTrackResults2: results.MRData.RaceTable.Races
                 }))
         }
     }
