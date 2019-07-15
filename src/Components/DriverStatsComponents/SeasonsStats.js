@@ -32,15 +32,15 @@ class SeasonStats extends Component {
     }
 
     getAverageGrid(races) {
-    let count = 0;
-    races.forEach(race => {
-        if (parseInt(race.Results[0].grid) === 0) {
-            count += 20
-        } else {
-            count += parseInt(race.Results[0].grid)
-        }
-    })
-    return parseFloat((count / races.length).toFixed(2))
+        let count = 0;
+        races.forEach(race => {
+            if (parseInt(race.Results[0].grid) === 0) {
+                count += 20
+            } else {
+                count += parseInt(race.Results[0].grid)
+            }
+        })
+        return parseFloat((count / races.length).toFixed(2))
     }
 
     getAverageFinish(races) {
@@ -100,7 +100,7 @@ class SeasonStats extends Component {
                         }
                     },
                     min: 1,
-                    max: 20
+                    max: 24
                 }],
                 plotOptions: {
                     pie: {

@@ -1,11 +1,12 @@
-#links-container{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+#website-description{
+    display: block;
+    margin:200px;
     text-align: center;
-    grid-row-gap: 300px;
+
 }
 
 h1{
     background: lightgray;
     border: 100px;
+    font-size: 39px;
 }

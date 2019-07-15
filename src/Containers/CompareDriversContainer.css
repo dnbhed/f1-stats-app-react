@@ -1,10 +1,15 @@
 #career-stats{
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+
     color: rgb(175, 175, 175);
     background: rgb(27, 27, 27);
     text-align: center;
+}
+
+#main{
+    display: grid;
+    grid-template-rows: repeat(2, 1fr)
 }
 
 #driver-1-career-stats{
@@ -35,4 +40,5 @@
 #charts-container{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+
 }

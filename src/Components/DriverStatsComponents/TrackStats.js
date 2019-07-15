@@ -36,9 +36,9 @@ class SeasonStats extends Component {
     getAverageGrid(races) {
         let count = 0;
         races.forEach(race => {
-            if (parseInt(race.Results[0].grid) === 0){
+            if (parseInt(race.Results[0].grid) === 0) {
                 count += 20
-            }else{
+            } else {
                 count += parseInt(race.Results[0].grid)
             }
         })
@@ -88,7 +88,7 @@ class SeasonStats extends Component {
                     categories: tracks,
                 }],
                 yAxis: [{
-                    reversed: true,
+
                     gridLineWidth: 0,
                     title: {
                         text: 'Position',
@@ -103,7 +103,7 @@ class SeasonStats extends Component {
                         }
                     },
                     min: 1,
-                    max: 20
+                    max: 24
                 }],
                 series: [{
                     name: 'Grid Results',

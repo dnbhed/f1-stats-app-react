@@ -8,12 +8,12 @@ const TrackResultsBySeason = (props) => {
     let driverCode = ''
 
 
-    if(props.results[0]){
+    if (props.results[0]) {
         driverName = props.results[0].Results[0].Driver.givenName + ' ' + props.results[0].Results[0].Driver.familyName + ' @ ' + props.results[0].Circuit.circuitName
 
         driverCode = props.code
     }
-    
+
     function parseSeasonsGridDataresults(results) {
         const reduced = results.reduce((acc, result) => {
             const year = `${result.season}`;
@@ -32,7 +32,7 @@ const TrackResultsBySeason = (props) => {
         return Object.entries(reduced);
     }
 
-    
+
 
     const results = props.results
     const gridResults = parseSeasonsGridDataresults(results)
@@ -83,7 +83,7 @@ const TrackResultsBySeason = (props) => {
                     }
                 },
                 min: 1,
-                max: 20
+                max: 24
             }],
             plotOptions: {
                 pie: {
@@ -107,7 +107,7 @@ const TrackResultsBySeason = (props) => {
     };
     const { chartOptions } = options;
 
-    return(
+    return (
         <div id="track-stats">
             <HighchartsReact
                 highcharts={Highcharts}

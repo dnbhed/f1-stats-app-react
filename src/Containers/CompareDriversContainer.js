@@ -1,11 +1,11 @@
-import React, {Component, Fragment} from 'react'
+import React, { Component, Fragment } from 'react'
 import DriverSelect from '../Components/SelectComponents/DriverSelect'
 import TrackSelect from '../Components/SelectComponents/TrackSelect'
 import CareerStatsCompare from '../Components/DriverStatsComponents/CareerStatsCompare'
 import TrackResultsBySeason from '../Components/DriverStatsComponents/TrackResultsBySeason'
 import './CompareDriversContainer.css'
 
-class CompareDriversContainer extends Component{
+class CompareDriversContainer extends Component {
 
     constructor(props) {
         super(props)
@@ -28,7 +28,7 @@ class CompareDriversContainer extends Component{
             selectedDriverSeasonsResults2: [],
             selectedDriverTrackResults2: [],
             tracks: [],
-            selectedTrack: '', 
+            selectedTrack: '',
             selectedTrackName: ''
 
         }
@@ -55,7 +55,7 @@ class CompareDriversContainer extends Component{
 
     onDriverSelected1(event, number) {
         const driverId = event
-        this.setState({driver1ID: event})
+        this.setState({ driver1ID: event })
         const driverUrl = `https://ergast.com/api/f1/drivers/${driverId}/results.json?limit=1000`;
         fetch(driverUrl)
             .then(res => res.json())
@@ -96,7 +96,7 @@ class CompareDriversContainer extends Component{
                 .then(results => this.setState({
                     selectedDriverTrackResults1: results.MRData.RaceTable.Races
                 }))
-        }   
+        }
     }
 
     onDriverSelected2(event, number) {
@@ -145,10 +145,10 @@ class CompareDriversContainer extends Component{
         }
     }
 
-    onTrackSelect(event){
+    onTrackSelect(event) {
         const trackId = event.target.value
-        this.setState({ selectedTrack: trackId})
-        if(this.state.code1){
+        this.setState({ selectedTrack: trackId })
+        if (this.state.code1) {
             const driverId = this.state.driver1ID
             console.log(driverId)
             const url = `https://ergast.com/api/f1/circuits/${trackId}/drivers/${driverId}/results.json`
@@ -160,7 +160,7 @@ class CompareDriversContainer extends Component{
                 }))
         }
 
-        if(this.state.code2){
+        if (this.state.code2) {
             const driverId = this.state.driver2ID
             const url = `https://ergast.com/api/f1/circuits/${trackId}/drivers/${driverId}/results.json`
             fetch(url)
@@ -171,11 +171,11 @@ class CompareDriversContainer extends Component{
         }
     }
 
-    render(){
-        return(
+    render() {
+        return (
             <Fragment>
                 <h2 id="page-explanation">Choose two drivers to compare their career stats. Choose a track to compare their preformances at that track.</h2>
-                
+
                 <section id="selectors">
 
                     <div id="driver-1-select">
@@ -203,47 +203,49 @@ class CompareDriversContainer extends Component{
                     </div>
 
                 </section>
+                <main id="main">
+                    <section id="career-stats">
+                        <div id="driver-1-career-stats">
+                            <CareerStatsCompare
+                                allRaces={this.state.allRaces1}
+                                name={this.state.name1}
+                                code={this.state.code1}
+                                number={this.state.number1}
+                                nationality={this.state.nationality1}
+                            />
+                        </div>
+                        <div id="driver-2-career-stats">
+                            <CareerStatsCompare
+                                allRaces={this.state.allRaces2}
+                                name={this.state.name2}
+                                code={this.state.code2}
+                                number={this.state.number2}
+                                nationality={this.state.nationality2}
+                            />
+                        </div>
 
-                <section id="career-stats">
-                    <div id="driver-1-career-stats">
-                        <CareerStatsCompare
-                            allRaces={this.state.allRaces1}
-                            name={this.state.name1}
-                            code={this.state.code1}
-                            number={this.state.number1}
-                            nationality={this.state.nationality1}
-                        />
-                    </div>
-                    <div id="driver-2-career-stats">
-                        <CareerStatsCompare
-                            allRaces={this.state.allRaces2}
-                            name={this.state.name2}
-                            code={this.state.code2}
-                            number={this.state.number2}
-                            nationality={this.state.nationality2}
-                        />
-                    </div>
-                                        
-                </section>
+                    </section>
 
-                <section id="charts-container">
-                    <div>
-                        <TrackResultsBySeason
-                            results={this.state.selectedDriverTrackResults1}
-                            code={this.state.code1}
-                        />
-                    </div>
-                    <div>
-                        <TrackResultsBySeason
-                            results={this.state.selectedDriverTrackResults2}
-                            code={this.state.code2}
-                        />
-                    </div>
-                    
-                    
-                </section>
+                    <section id="charts-container">
+                        <div>
+                            <TrackResultsBySeason
+                                results={this.state.selectedDriverTrackResults1}
+                                code={this.state.code1}
+                            />
+                        </div>
+                        <div>
+                            <TrackResultsBySeason
+                                results={this.state.selectedDriverTrackResults2}
+                                code={this.state.code2}
+                            />
+                        </div>
+
+
+                    </section>
+                </main>
+
             </Fragment>
-            
+
         )
     }
 }

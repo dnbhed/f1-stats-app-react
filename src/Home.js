@@ -1,17 +1,25 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import './Home.css'
 
 const Home = () => {
-    return(
+    return (
 
-            <div id="links-container">
-                <h1 id="driver-stats-link"><Link to="/driver-stats">Driver Stats</Link></h1>
-                <h1 id="compare-drivers-link"><Link to="/compare-drivers">Compare Drivers</Link></h1>
-                <h1 id="track-stats-link"><Link to="/track-stats">Track Stats</Link></h1>
-                <h1 id="constructor-stats-link"><Link to="/constructor-stats">Constructor Stats</Link></h1>
-            </div>
-            
+        <h1 id="website-description">
+            This site is a personal project, which will be regularly updated over the rest of 2019.
+
+            <br />
+            Its purpose is to display Formula 1 data on current drivers, tracks and constructors.
+            The data is from the ergast.com F1 API.
+            <br />
+
+            The site uses JavaScript, React.js and Highcharts.
+            <br />
+
+            Code can be found @ https://github.com/ThomasHAOD/f1-stats-app-react.
+            Any suggestions for improvements or questions can be made there.
+        </h1>
+
 
     )
 }
