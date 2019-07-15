@@ -1,4 +1,4 @@
-#F1 Stats App
+F1 Stats App
 
 This App is a work in progress.
 
