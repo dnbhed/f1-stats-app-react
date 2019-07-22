@@ -24,15 +24,6 @@ class SeasonStats extends Component {
         return Object.entries(reduced);
     }
 
-    parseTrackFinishingData(tracks) {
-        const reduced = tracks.reduce((acc, track) => {
-            const circuit = `${track.MRData.RaceTable.circuitId}`;
-            acc[circuit] = this.getAverageFinish(track.MRData.RaceTable.Races)
-            return acc;
-        }, {})
-        return Object.entries(reduced);
-    }
-
     getAverageGrid(races) {
         let count = 0;
         races.forEach(race => {
@@ -45,6 +36,15 @@ class SeasonStats extends Component {
         return parseFloat((count / races.length).toFixed(2))
     }
 
+    parseTrackFinishingData(tracks) {
+        const reduced = tracks.reduce((acc, track) => {
+            const circuit = `${track.MRData.RaceTable.circuitId}`;
+            acc[circuit] = this.getAverageFinish(track.MRData.RaceTable.Races)
+            return acc;
+        }, {})
+        return Object.entries(reduced);
+    }
+
     getAverageFinish(races) {
         let count = 0;
         races.forEach(race => {
@@ -54,6 +54,10 @@ class SeasonStats extends Component {
         })
         return parseFloat((count / races.length).toFixed(2))
     }
+
+
+
+
 
     render() {
 
@@ -67,12 +71,12 @@ class SeasonStats extends Component {
             chartOptions: {
                 chart: {
                     borderWidth: 5,
-                    borderColor: 'rgb(27, 27, 27)',
+                    borderColor: 'rgb(205, 205, 205)',
                     backgroundColor: {
                         linearGradient: [0, 0, 500, 500],
                         stops: [
-                            [0, 'rgb(133, 133, 133)'],
-                            [1, 'rgb(133, 133, 133)']
+                            [0, 'rgb(183, 183, 183)'],
+                            [1, 'rgb(183, 183, 183)']
                         ]
                     },
                     type: 'column',

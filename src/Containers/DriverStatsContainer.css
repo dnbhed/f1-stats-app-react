@@ -10,3 +10,6 @@
     color: rgb(175, 175, 175);
     text-align: center;
 }
+#select-bar{
+    align-items: left;
+}

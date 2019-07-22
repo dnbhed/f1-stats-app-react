@@ -16,13 +16,13 @@ class GridPie extends Component {
     parseGridData(races) {
         const reduced = races.reduce((acc, race) => {
             let position = ''
-            if(race.Results[0].grid === '0'){
+            if (race.Results[0].grid === '0') {
                 position = 'Pit Lane Start'
             } else {
                 position = `P${race.Results[0].grid}`
             }
             const gridPosition = position;
-            if(acc[gridPosition]){
+            if (acc[gridPosition]) {
                 acc[gridPosition] += 1;
             } else {
                 acc[gridPosition] = 1;
@@ -31,7 +31,7 @@ class GridPie extends Component {
         }, {})
         return Object.entries(reduced);
     }
-    
+
 
     render() {
         const gridPositions = this.parseGridData(this.props.allRaces)
@@ -39,12 +39,12 @@ class GridPie extends Component {
             chartOptions: {
                 chart: {
                     borderWidth: 5,
-                    borderColor: 'rgb(27, 27, 27)',
+                    borderColor: 'rgb(205, 205, 205)',
                     backgroundColor: {
                         linearGradient: [0, 0, 500, 500],
                         stops: [
-                            [0, 'rgb(133, 133, 133)'],
-                            [1, 'rgb(133, 133, 133)']
+                            [0, 'rgb(183, 183, 183)'],
+                            [1, 'rgb(183, 183, 183)']
                         ]
                     },
                     type: 'pie',
