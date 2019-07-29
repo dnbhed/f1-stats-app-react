@@ -63,12 +63,12 @@ class SeasonStats extends Component {
             chartOptions: {
                 chart: {
                     borderWidth: 5,
-                    borderColor: 'rgb(205, 205, 205)',
+                    borderColor: 'rgb(0,0,0)',
                     backgroundColor: {
                         linearGradient: [0, 0, 500, 500],
                         stops: [
-                            [0, 'rgb(183, 183, 183)'],
-                            [1, 'rgb(183, 183, 183)']
+                            [0, 'rgb(240,240,240)'],
+                            [1, 'rgb(240,240,240)']
                         ]
                     },
                     type: 'line'
