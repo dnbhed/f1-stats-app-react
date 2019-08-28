@@ -5,8 +5,12 @@
 
 }
 
+:link:visited {
+    color: white;
+}
+
 h1{
-    background: lightgray;
+    background: rgb(46, 46, 46);
     border: 100px;
     font-size: 39px;
 }
