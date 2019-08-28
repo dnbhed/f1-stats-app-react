@@ -43,8 +43,8 @@ class GridPie extends Component {
                     backgroundColor: {
                         linearGradient: [0, 0, 500, 500],
                         stops: [
-                            [0, 'rgb(133, 133, 133)'],
-                            [1, 'rgb(133, 133, 133)']
+                            [0, 'rgb(220, 220, 220)'],
+                            [1, 'rgb(220, 220, 220)']
                         ]
                     },
                     type: 'pie',
