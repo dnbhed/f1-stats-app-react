@@ -1,10 +1,13 @@
 import React from 'react';
+import Dropdown from "react-bootstrap/Dropdown";
 import './DriverSelect.css'
 
 const TrackSelect = (props) => {
 
     const options = props.tracks.map((track, index) => {
-        return <option key={index} value={track.circuitId}>{track.circuitName}</option>
+        return <Dropdown.Item as="button" eventKey={index} value={track.circuitId} onClick={handleChange}>
+    {track.Location.country}: {track.circuitName}
+  </Dropdown.Item>;
     })
 
     function handleChange(event) {
@@ -12,12 +15,14 @@ const TrackSelect = (props) => {
     }
 
     return (
-        <div id="select-bar">
-            <select id="track-selector" defaultValue="default" onChange={handleChange}>
-                <option disabled value="default">Choose a Track...</option>
-                {options}
-            </select>
-        </div>
+        
+        <Dropdown>
+        <Dropdown.Toggle variant="success" id="track-selector" >
+          Select Track
+        </Dropdown.Toggle>
+  
+        <Dropdown.Menu>{options}</Dropdown.Menu>
+      </Dropdown>
     )
 }
 

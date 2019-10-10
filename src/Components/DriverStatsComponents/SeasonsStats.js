@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import HighchartsReact from 'highcharts-react-official';
 import Highcharts from 'highcharts';
+import Spinner from 'react-bootstrap/Spinner'
 import './SeasonsStats.css'
 
 class SeasonStats extends Component {
@@ -125,6 +126,7 @@ class SeasonStats extends Component {
         const { chartOptions } = options;
         return (
             <div id="season-stats">
+                <Spinner animation="grow" variant="danger" />
                 <HighchartsReact
                     highcharts={Highcharts}
                     options={chartOptions}

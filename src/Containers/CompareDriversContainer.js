@@ -203,6 +203,8 @@ class CompareDriversContainer extends Component {
                     </div>
 
                 </section>
+                <br/>
+                <br/>
                 <main id="main">
                     <section id="career-stats">
                         <div id="driver-1-career-stats">

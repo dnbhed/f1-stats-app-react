@@ -5,11 +5,12 @@ import DriverDetails from './CareerStatsComponents/DriverDetails';
 import AverageGrid from './CareerStatsComponents/AverageGrid';
 import AverageFinish from './CareerStatsComponents/AverageFinish';
 import NumOfPoles from './CareerStatsComponents/NumOfPoles';
+import Card from "react-bootstrap/Card"
 import './CareerStats.css'
 
 const CareerStats = (props) => {
     return (
-        <div id="driver-career-stats">
+        <Card id="driver-career-stats">
             <DriverDetails
                 name={props.name}
                 code={props.code}
@@ -20,10 +21,8 @@ const CareerStats = (props) => {
             <NumOfPoles races={props.allRaces} />
             <AverageGrid races={props.allRaces} />
             <AverageFinish races={props.allRaces} />
-        </div>
-        
-    );
-    
+        </Card>
+    ); 
 }
 
    
