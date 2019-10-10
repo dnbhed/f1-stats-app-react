@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import HighchartsReact from 'highcharts-react-official';
 import Highcharts from 'highcharts';
+import Card from 'react-bootstrap/Card';
 import './GridPie.css'
 
 class GridPie extends Component {
@@ -75,13 +76,13 @@ class GridPie extends Component {
         };
         const { chartOptions } = options;
         return (
-            <div id="grid-pie">
+            <Card id="grid-pie">
                 <HighchartsReact
                     highcharts={Highcharts}
                     options={chartOptions}
                     ref={this.chartComponent}
                 />
-            </div>
+            </Card>
         )
     }
 }

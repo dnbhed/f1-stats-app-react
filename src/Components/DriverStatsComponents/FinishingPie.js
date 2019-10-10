@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import HighchartsReact from 'highcharts-react-official';
 import Highcharts from 'highcharts';
+import Card from 'react-bootstrap/Card';
 import './FinishingPie.css';
 
 class FinishingPie extends Component {
@@ -72,14 +73,14 @@ class FinishingPie extends Component {
         };
         const { chartOptions } = options;
         return (
-            <div id="finishing-pie">
+            <Card id="finishing-pie">
                 <HighchartsReact
                     highcharts={Highcharts}
                     options={chartOptions}
                     ref={this.chartComponent}
 
                 />
-            </div>
+            </Card>
         )
     }
 }

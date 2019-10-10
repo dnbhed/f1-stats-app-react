@@ -6,6 +6,8 @@ import './SeasonsStats.css'
 
 class SeasonStats extends Component {
 
+
+
     constructor(props) {
         super(props)
         this.chartComponent = React.createRef();
@@ -13,6 +15,7 @@ class SeasonStats extends Component {
 
     componentDidMount() {
         this.chartComponent.current.chart.reflow();
+
     }
 
     parseSeasonsGridData(seasons) {
@@ -123,10 +126,10 @@ class SeasonStats extends Component {
                 }]
             },
         };
+
         const { chartOptions } = options;
         return (
             <div id="season-stats">
-                <Spinner animation="grow" variant="danger" />
                 <HighchartsReact
                     highcharts={Highcharts}
                     options={chartOptions}
