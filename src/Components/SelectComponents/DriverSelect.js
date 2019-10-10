@@ -1,24 +1,29 @@
-import React from 'react';
-import './DriverSelect.css'
+import React from "react";
+import Dropdown from "react-bootstrap/Dropdown";
+import "./DriverSelect.css";
 
-const DriverSelect = (props) => {
+const DriverSelect = props => {
+  const options = props.drivers.map(driver => {
+    return <Dropdown.Item as="button" eventKey={driver.driverId} value={driver.driverId} onClick={handleChange}>
+    {driver.givenName} {driver.familyName}
+  </Dropdown.Item>
+    
+  });
 
-    const options = props.drivers.map((driver) => {
-        return <option key={driver.driverId} value={driver.driverId}>{driver.givenName} {driver.familyName}</option>
-    })
+  function handleChange(event) {
+    props.onDriverSelected(event.target.value, props.number);
+  }
 
-    function handleChange(event) {
-        props.onDriverSelected(event.target.value, props.number)
-    }
+  return (
+    <Dropdown>
+      <Dropdown.Toggle variant="success" id="driver-selector" >
+        Select Driver
+      </Dropdown.Toggle>
 
-    return (
-        <div id="select-bar">
-            <select id="driver-selector" defaultValue="default" onChange={handleChange}>
-                <option disabled value="default">Choose a Driver...</option>
-                {options}
-            </select>
-        </div>
-    )
-}
+      <Dropdown.Menu>{options}</Dropdown.Menu>
+    </Dropdown>
+  );
+};
+
 
 export default DriverSelect;
