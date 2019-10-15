@@ -2,5 +2,11 @@
     grid-column: 1 / span 4;
     grid-row: 1 span 1;
     height: 100%;
-    text-align: left;
+    text-align: center;
+    background: lightgray;
+}
+
+h3 {
+    color: black;
+
 }
