@@ -2,4 +2,6 @@
     width: 50vw;
     grid-column: 1 / span 6;
     grid-row: 2 / span 1;
+    margin: 0 auto;
+
 }

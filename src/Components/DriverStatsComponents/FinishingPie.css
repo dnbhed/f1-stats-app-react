@@ -1,5 +1,6 @@
 #finishing-pie{
-    width: 400px;
-    grid-column: 9 / span 3;
+    width: 100%;
+    grid-column: 9 / span 4;
     grid-row: 1 / span 1;
+    margin: 0 auto;
 }

@@ -39,8 +39,6 @@ class GridPie extends Component {
         const options = {
             chartOptions: {
                 chart: {
-                    borderWidth: 5,
-                    borderColor: 'rgb(27, 27, 27)',
                     backgroundColor: {
                         linearGradient: [0, 0, 500, 500],
                         stops: [
@@ -59,6 +57,9 @@ class GridPie extends Component {
                 },
                 subtitle: {
                     text: `Times in Grid Positions`
+                },
+                legend:{
+                    color:'white'
                 },
                 plotOptions: {
                     pie: {

@@ -33,8 +33,6 @@ class FinishingPie extends Component {
         const options = {
             chartOptions: {
                 chart: {
-                    borderWidth: 5,
-                    borderColor: 'rgbrgb(27, 27, 27)',
                     backgroundColor: {
                         linearGradient: [0, 0, 500, 500],
                         stops: [

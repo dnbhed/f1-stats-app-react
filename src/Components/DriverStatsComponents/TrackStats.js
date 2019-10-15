@@ -66,8 +66,6 @@ class SeasonStats extends Component {
         const options = {
             chartOptions: {
                 chart: {
-                    borderWidth: 5,
-                    borderColor: 'rgb(27, 27, 27)',
                     backgroundColor: {
                         linearGradient: [0, 0, 500, 500],
                         stops: [
@@ -78,12 +76,15 @@ class SeasonStats extends Component {
                     type: 'column',
 
                 },
+                legend:{
+                    color:'white'},
                 title: {
                     text: this.props.code + ' ' + this.props.number
                 },
                 subtitle: {
                     text: `Average Grid and Finishing Positions`
                 },
+                
                 xAxis: [{
                     categories: tracks,
                 }],
@@ -91,16 +92,12 @@ class SeasonStats extends Component {
 
                     gridLineWidth: 0,
                     title: {
-                        text: 'Position',
-                        style: {
-                            color: Highcharts.getOptions().colors[0]
-                        }
+                        text: 'Position'
+                        
                     },
                     labels: {
-                        format: 'P{value} ',
-                        style: {
-                            color: Highcharts.getOptions().colors[0]
-                        }
+                        format: 'P{value} '
+                        
                     },
                     min: 1,
                     max: 24
