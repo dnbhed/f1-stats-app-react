@@ -4,10 +4,17 @@ import "./DriverSelect.css";
 
 const DriverSelect = props => {
   const options = props.drivers.map(driver => {
-    return <Dropdown.Item as="button" eventKey={driver.driverId} value={driver.driverId} onClick={handleChange}>
-    {driver.givenName} {driver.familyName}
-  </Dropdown.Item>
-    
+    console.log(props.drivers)
+    return (
+      <Dropdown.Item
+        as="button"
+        eventKey={driver.driverId}
+        value={driver.driverId}
+        onClick={handleChange}
+      >
+        {driver.givenName} {driver.familyName}
+      </Dropdown.Item>
+    );
   });
 
   function handleChange(event) {
@@ -16,7 +23,7 @@ const DriverSelect = props => {
 
   return (
     <Dropdown>
-      <Dropdown.Toggle variant="success" id="driver-selector" >
+      <Dropdown.Toggle variant="success" id="driver-selector">
         Select Driver
       </Dropdown.Toggle>
 
@@ -24,6 +31,5 @@ const DriverSelect = props => {
     </Dropdown>
   );
 };
-
 
 export default DriverSelect;
