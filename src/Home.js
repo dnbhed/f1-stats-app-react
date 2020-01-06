@@ -4,8 +4,8 @@ import "./Home.css";
 
 const Home = () => {
   return (
-    <h1 id="website-description">
-      Choose DRIVER STATS or COMPARE DRIVERS to start
+    <h2 id="website-description">
+      Choose DRIVER STATS or COMPARE DRIVERS to start.
       <br />
       The purpose of this site is to display Formula 1 data on current drivers,
       tracks and constructors. The data is from the ergast.com F1 API.
@@ -14,7 +14,7 @@ const Home = () => {
       <br />
       Code can be found @ https://github.com/ThomasHAOD/f1-stats-app-react. Any
       suggestions for improvements or questions can be made there.
-    </h1>
+    </h2>
   );
 };
 
