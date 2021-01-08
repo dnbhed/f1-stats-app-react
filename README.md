@@ -1,6 +1,6 @@
-F1 Stats App
+F1 Stats App v2
 
-This App is a work in progress.
+*A newer version of this app is being worked on. This one is deprecated.*
 
 This is the second version of an app originally created in vanilla JavaScript and Highcharts, and now in JS, React and Highcharts.
 
